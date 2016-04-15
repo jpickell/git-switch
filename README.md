@@ -18,9 +18,11 @@ This switch will allow you to easily switch between pre-configured upstream prov
 
 -Create a file called ".git-switch" in your home directory containing the user names and urls of the providers you want to switch between with the following format:
 
+```
 <username>:<gitlab.com>
 <username>:<github.com>
 <username>:<git.mycompany.com>
+```
 
 -Move the git-switch script somewhere in your path so that its easily accessible
 
