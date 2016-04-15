@@ -27,17 +27,21 @@ This switch will allow you to easily switch between pre-configured upstream prov
 
 -Move the git-switch script somewhere in your path so that its easily accessible
 
-`cp git-switch /usr/local/bin`
+```
+cp git-switch /usr/local/bin
+```
 
 -Change the permissions on git-switch so that its executable
 
-`chmod +x /usr/local/bin/git-switch`
+```
+chmod +x /usr/local/bin/git-switch
+```
 
 -Run the script from within an existing git controlled directory (if you run it from an uninitialized directory, you will get prompted to initialize it and choose the remote provider)
 
 **Note**
 
-In order to preserve history between providers, you may find it useful to force the first update after switching. (i.e. git push -f) Use with caution!
+`In order to preserve history between providers, you may find it useful to force the first update after switching. (i.e. git push -f) Use with caution!`
 
 ----
 
