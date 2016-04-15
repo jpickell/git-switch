@@ -1,10 +1,18 @@
 #!/usr/bin/perl
+#--------------------------------------#
+# git-switch
+# 
+# https://github.com/jpickell/git-switch
+# https://gitlab.com/jpickell/git-switch
+#
+#--------------------------------------#
 
 #
 # Repositories are configured below
 # username:repository URL
 # This should be moved into its own config file
 
+$found=0;
 $c=1; 
 chomp($git=`which git`);
 # username:repo url
@@ -17,14 +25,21 @@ pickellj:github.wwt.com
 
 sub dstamp(){
    chomp($dt=`date`);
-   @file=`cat README.md`;
+   $dline="Last Updated: $dt\n";
+   if(-e "README.md"){
+       @file=`cat README.md`;
+    }else{
+	@file="";
+    }
    open(FILE, ">README.md")||die "Can't write to README.md, $!\n"; 
    foreach $f(@file){
 	if ($f =~ /^Last Updated/){
-		$f="Last Updated: $dt\n"
+		$f=$dline;
+		$found=1;
 	   }
 	   print FILE $f;
 	}
+	if ($found == 0){ print FILE $dline; };
    close FILE;
 }
 
@@ -73,7 +88,7 @@ sub current(){
 
 if ( ! -e $git){exit;}
 if ( ! -d ".git"){
-	$user=$ENV{"USER"};
+	#$user=$ENV{"USER"};
 	@PWD=split(/\//,$ENV{"PWD"});
 	$project=pop @PWD;	
 	print("This directory has not been initialized.  Initialize? (y|n) ");
@@ -82,8 +97,9 @@ if ( ! -d ".git"){
 		print("$git init\n");
 		system("$git init");
 		menu;
-		print("$git remote add origin git\@$rnew:$user/$project.git\n");
-		system("$git remote add origin git\@$rnew:$user/$project.git\n");
+		print("$git remote add origin git\@$rnew:$ruser/$project.git\n");
+		system("$git remote add origin git\@$rnew:$ruser/$project.git\n");
+		dstamp;
 		exit;
 	   }else{
         	exit;
