@@ -12,9 +12,10 @@
 # username:repository URL
 # This should be moved into its own config file
 
-$found=0;
 $c=1; 
+$found=0;
 chomp($git=`which git`);
+
 # username:repo url
 @repos=qw{
 jkp:gitlab.vxrs.com
@@ -88,7 +89,6 @@ sub current(){
 
 if ( ! -e $git){exit;}
 if ( ! -d ".git"){
-	#$user=$ENV{"USER"};
 	@PWD=split(/\//,$ENV{"PWD"});
 	$project=pop @PWD;	
 	print("This directory has not been initialized.  Initialize? (y|n) ");
