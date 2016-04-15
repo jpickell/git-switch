@@ -17,6 +17,18 @@ jpickell:github.com
 pickellj:github.wwt.com
 };
 
+sub dstamp(){
+   chomp($dt=`date`);
+   @file=`cat README.md`;
+   open(FILE, ">README.md")||die "Can't write to README.md, $!\n"; 
+   foreach $f(@file){
+	if ($f =~ /^Last Updated/){
+		$f="Last Updated: $dt\n"
+	   }
+	   print FILE $f;
+	}
+   close FILE;
+}
 
 sub menu(){
    foreach $r(@repos){
@@ -41,6 +53,7 @@ sub menu(){
 sub init(){
  print("\ngit remote set-url origin git\@$rnew:$ruser/$project\n");
  system("git remote set-url origin git\@$rnew:$ruser/$project");
+ dstamp;
 }
 
 sub current(){
