@@ -9,6 +9,4 @@ Simple script to easily switch between git remote urls.
 - Move the config to .git-switch config file instead of keeping it in the script
 ----
 
-
-
 Last Updated: Thu Apr 14 20:32:19 CDT 2016

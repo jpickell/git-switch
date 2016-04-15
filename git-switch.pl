@@ -1,8 +1,5 @@
 #!/usr/bin/perl
 
-# Need to add a .active function so that
-# you can trigger a push even with a clean
-# repo
 #
 # Repositories are configured below
 # username:repository URL
@@ -10,6 +7,7 @@
 
 $c=1; 
 
+# username:repo url
 @repos=qw{
 jkp:gitlab.vxrs.com
 jpickell:gitlab.com
