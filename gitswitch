@@ -13,16 +13,23 @@
 # This should be moved into its own config file
 
 $c=1; 
+$home=$ENV{"HOME"};
 $found=0;
 chomp($git=`which git`);
 
+if(-e "$home/.gitswitch"){
+	@repos=`cat $home/.gitswitch`;
+}else{
+	print("$home/.gitswitch not found\n\nPlease create the file with one entry per line:\n<user>:<git url>\n\n");
+	exit;
+}
 # username:repo url
-@repos=qw{
-jkp:gitlab.vxrs.com
-jpickell:gitlab.com
-jpickell:github.com
-pickellj:github.wwt.com
-};
+#@repos=qw{
+#jkp:gitlab.vxrs.com
+#jpickell:gitlab.com
+#jpickell:github.com
+#pickellj:github.wwt.com
+#};
 
 sub dstamp(){
    chomp($dt=`date`);
@@ -58,8 +65,15 @@ sub menu(){
 	$c++;
    }
 
+ print("\n[x] Exit\n");
  print ("\nChoose new repository: ");
- chomp($ans=<>);$ans=$ans-1;
+ chomp($ans=<>);
+ if ($ans =~ /[xX]/){ 
+	print("\nNo changes made. Exiting...\n");
+	exit; 
+ }
+ $ans=$ans-1;
+
  ($ruser,$rnew)=split(/:/, $repos[$ans]);
  return $ruser,$rnew;
 }
