@@ -1,4 +1,4 @@
-*git-switch*
+**git-switch**
 
 ---
 
@@ -45,6 +45,6 @@ chmod +x /usr/local/bin/git-switch
 
 `In order to preserve history between providers, you may find it useful to force the first update after switching. (i.e. git push -f) Use with caution!`
 
-----
+---
 
 Last Updated: Fri Apr 15 08:23:09 CDT 2016
