@@ -17,10 +17,10 @@ $home=$ENV{"HOME"};
 $found=0;
 chomp($git=`which git`);
 
-if(-e "$home/.gitswitch"){
-	@repos=`cat $home/.gitswitch`;
+if(-e "$home/.git-switch"){
+	@repos=`cat $home/.git-switch`;
 }else{
-	print("$home/.gitswitch not found\n\nPlease create the file with one entry per line:\n<user>:<git url>\n\n");
+	print("$home/.git-switch not found\n\nPlease create the file with one entry per line:\n<user>:<git url>\n\n");
 	exit;
 }
 # username:repo url
