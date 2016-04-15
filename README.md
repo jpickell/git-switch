@@ -1,8 +1,10 @@
-***git-switch***
+*git-switch*
+
+---
 
 Simple script to easily switch between git remote urls.
 
-----
+---
 
 **Description**
 
