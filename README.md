@@ -43,8 +43,10 @@ chmod +x /usr/local/bin/git-switch
 
 **Note**
 
-`In order to preserve history between providers, you may find it useful to force the first update after switching, otherwise you may end up with a whole slew of merge conflicts! (i.e. git push -f) Use with caution!`
+`In order to preserve history between providers, you may find it useful to force the first update after switching, otherwise you may end up with a whole slew of merge conflicts! 
+
+(i.e. git push -f) Use with caution!`
 
 ---
 
-Last Updated: Sun Apr 17 21:46:20 CDT 2016
+Last Updated: Sun Apr 17 21:55:41 CDT 2016
