@@ -2,19 +2,19 @@
 
 ---
 
-Simple script to easily switch between git remote urls.
+Simple script to easily switch between git remote urls and different user accounts.
 
 ---
 
 **Description**
 
-Do you maintian multiple copies of your code in different directories so that you can sync to different remote git urls?  (github.com, gitlab.com, git.yourcompany.com, etc)
+Do you maintian multiple copies of your code in different directories so that you can sync to different remote git urls?  Do you use different user names for these accounts?  (github.com, gitlab.com, git.yourcompany.com, etc)
 
-This switch will allow you to easily switch between pre-configured upstream providers from within a single directory.  
+`git-switch` will allow you to easily switch between pre-configured upstream providers and/or user names from within a single directory.
 
 <img src="http://www.jeffpickell.com/git-switch/images/git-switch_menu.png" alt="git-switch Menu">
 
-- Will initialize a directory if it hasn't already been set up.  
+- If the current directory is not under git control, `git-switch` will prompt you to choose a provider and then initialize the directory for you.
 - Updates the final line of the README with a "Last Updated: $date" line to allow for immediate add,comment & push to the new remote url.  If there's no README.md, it will create it and add the datestamp.
 
 **Usage**
@@ -47,4 +47,4 @@ chmod +x /usr/local/bin/git-switch
 
 ---
 
-Last Updated: Fri Apr 15 09:03:20 CDT 2016
+Last Updated: Sun Apr 17 21:46:20 CDT 2016
