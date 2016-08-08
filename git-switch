@@ -23,13 +23,6 @@ if(-e "$home/.git-switch"){
 	print("$home/.git-switch not found\n\nPlease create the file with one entry per line:\n<user>:<git url>\n\n");
 	exit;
 }
-# username:repo url
-#@repos=qw{
-#jkp:gitlab.vxrs.com
-#jpickell:gitlab.com
-#jpickell:github.com
-#pickellj:github.wwt.com
-#};
 
 sub dstamp(){
    chomp($dt=`date`);

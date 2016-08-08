@@ -2,7 +2,9 @@
 
 ---
 
-Simple script to easily switch between git remote urls and different user accounts.
+Horrible little script that easily switches between git remote urls and different user accounts.
+
+*and force overwrites your commit history- this is generally a very bad thing.  Make sure you know what you're doing*
 
 ---
 
@@ -12,7 +14,7 @@ Do you maintian multiple copies of your code in different directories so that yo
 
 `git-switch` will allow you to easily switch between pre-configured upstream providers and/or user names from within a single directory.
 
-<img src="http://www.jeffpickell.com/git-switch/images/git-switch_menu.png" alt="git-switch Menu">
+<img src="images/git-switch_menu.png" alt="git-switch Menu">
 
 - If the current directory is not under git control, `git-switch` will prompt you to choose a provider and then initialize the directory for you.
 - Updates the final line of the README with a "Last Updated: $date" line to allow for immediate add,comment & push to the new remote url.  If there's no README.md, it will create it and add the datestamp.
@@ -43,7 +45,8 @@ chmod +x /usr/local/bin/git-switch
 
 **Note**
 
-`In order to preserve history between providers, you may find it useful to force the first update after switching, otherwise you may end up with a whole slew of merge conflicts!`
+`In order to preserve history between providers, you may find it useful to force the first update after switching, otherwise you may end up with a whole slew of merge conflicts!` 
+*and by "preserve" I mean "Overwrite"  Eww.  Ugh. Yes, very bad. But I do it anyway*
 
 `i.e. "git push -f"`
 
@@ -51,4 +54,4 @@ chmod +x /usr/local/bin/git-switch
 
 ---
 
-Last Updated: Sun Apr 17 21:55:41 CDT 2016
+Last Updated: Mon Aug  8 15:36:33 CDT 2016
