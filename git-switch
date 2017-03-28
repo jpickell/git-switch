@@ -14,6 +14,7 @@
 
 $c=1; 
 $home=$ENV{"HOME"};
+$edit=$ENV{"EDITOR"};
 $found=0;
 chomp($git=`which git`);
 
@@ -58,6 +59,7 @@ sub menu(){
 	$c++;
    }
 
+ print("\n[e] Edit config\n");
  print("\n[x] Exit\n");
  print ("\nChoose new repository: ");
  chomp($ans=<>);
@@ -65,6 +67,12 @@ sub menu(){
 	print("\nNo changes made. Exiting...\n");
 	exit; 
  }
+ if ($ans =~ /[eE]/){
+	if($edit eq ""){print("Please set a default editor for your environment.\n\n");exit;}
+	system("$edit ~/.git-switch");
+	exit; 
+ }
+
  $ans=$ans-1;
 
  ($ruser,$rnew)=split(/:/, $repos[$ans]);
