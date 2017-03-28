@@ -18,6 +18,7 @@ Do you maintian multiple copies of your code in different directories so that yo
 
 - If the current directory is not under git control, `git-switch` will prompt you to choose a provider and then initialize the directory for you.
 - Updates the final line of the README with a "Last Updated: $date" line to allow for immediate add,comment & push to the new remote url.  If there's no README.md, it will create it and add the datestamp.
+- The "Edit" option will open up the config file ($HOME/.git-switch) in your predefined $EDITOR
 
 **Usage**
 
@@ -55,4 +56,4 @@ chmod +x /usr/local/bin/git-switch
 
 ---
 
-Last Updated: Tue Mar 28 14:58:50 CDT 2017
+Last Updated: Tue Mar 28 15:16:40 CDT 2017
