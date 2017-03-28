@@ -55,4 +55,4 @@ chmod +x /usr/local/bin/git-switch
 
 ---
 
-Last Updated: Tue Mar 28 14:54:21 CDT 2017
+Last Updated: Tue Mar 28 14:58:50 CDT 2017
