@@ -12,17 +12,54 @@
 # username:repository URL
 # This should be moved into its own config file
 
+undef @ARGV;
 $c=1; 
 $home=$ENV{"HOME"};
 $edit=$ENV{"EDITOR"};
 $found=0;
 chomp($git=`which git`);
+if ( ! -e $git){
+    print("Unable to find the git binary.  Make sure that it is installed and available in your PATH\n\n");
+    exit;
+}
 
 if(-e "$home/.git-switch"){
 	@repos=`cat $home/.git-switch`;
 }else{
 	print("$home/.git-switch not found\n\nPlease create the file with one entry per line:\n<user>:<git url>\n\n");
 	exit;
+}
+
+sub help(){
+print<<JKP;
+
+Usage
+
+-Create a file called ".git-switch" in your home directory containing the user names and urls of the providers you want to switch between with the following format:
+
+<username>:<gitlab.com>
+<username>:<github.com>
+<username>:<git.mycompany.com>
+
+-Move the git-switch script somewhere in your path so that its easily accessible
+
+cp git-switch /usr/local/bin
+
+-Change the permissions on git-switch so that its executable
+
+chmod +x /usr/local/bin/git-switch
+
+-Run the script from within an existing git controlled directory (if you run it from an uninitialized directory, you will get prompted to initialize it and choose the remote provider)
+
+Note
+
+In order to preserve history between providers, you may find it useful to force the first update after switching, otherwise you may end up with a whole slew of merge conflicts! and by "preserve" I mean "Overwrite" Eww. Ugh. Yes, very bad. Be sure you understand what this does before using it!
+
+i.e. "git push -f"
+
+Use with caution!
+
+JKP
 }
 
 sub dstamp(){
@@ -59,18 +96,24 @@ sub menu(){
 	$c++;
    }
 
- print("\n[e] Edit config\n");
- print("\n[x] Exit\n");
+ print("\n[h] Help\n");
+ print("[e] Edit config\n");
+ print("[x] Exit\n");
  print ("\nChoose new repository: ");
  chomp($ans=<>);
- if ($ans =~ /[xX]/){ 
-	print("\nNo changes made. Exiting...\n");
-	exit; 
+if ($ans =~ m/[a-zA-Z]/){
+ SWITCH: for ($ans) {
+	/x|X/	&& do { print("No changes made. Exiting...\n"); };
+      	/e|E/ 	&& do { 
+			if($edit eq ""){
+				print("Please set a default editor for your environment first.\n\n");
+				}else{
+				system("$edit $home/.git-switch");
+				}
+			};
+	/h|H/	&& do { help;};
+        exit; 
  }
- if ($ans =~ /[eE]/){
-	if($edit eq ""){print("Please set a default editor for your environment.\n\n");exit;}
-	system("$edit ~/.git-switch");
-	exit; 
  }
 
  $ans=$ans-1;
@@ -102,7 +145,7 @@ sub current(){
  return $project;
 }
 
-if ( ! -e $git){exit;}
+
 if ( ! -d ".git"){
 	@PWD=split(/\//,$ENV{"PWD"});
 	$project=pop @PWD;	
