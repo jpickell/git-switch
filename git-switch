@@ -62,6 +62,13 @@ Use with caution!
 JKP
 }
 
+sub all(){
+    print("This function has not yet been implemented.\n\n");
+    # loop through the providers
+    # push -f
+}
+
+
 sub dstamp(){
    chomp($dt=`date`);
    $dline="Last Updated: $dt\n";
@@ -96,13 +103,15 @@ sub menu(){
 	$c++;
    }
 
- print("\n[h] Help\n");
+ print("\n[a] Deploy to all listed remotes\n");
+ print("[h] Help\n");
  print("[e] Edit config\n");
  print("[x] Exit\n");
  print ("\nChoose new repository: ");
  chomp($ans=<>);
 if ($ans =~ m/[a-zA-Z]/){
  SWITCH: for ($ans) {
+	/a|A/   && do { all; };
 	/x|X/	&& do { print("No changes made. Exiting...\n"); };
       	/e|E/ 	&& do { 
 			if($edit eq ""){
