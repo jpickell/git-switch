@@ -57,15 +57,31 @@ In order to preserve history between providers, you may find it useful to force 
 
 i.e. "git push -f"
 
-Use with caution!
+Use with extreme caution!
 
 JKP
 }
 
+sub set_remote(){
+ print("$git remote set-url origin git\@$rnew:$ruser/$project\n");
+ system("$git remote set-url origin git\@$rnew:$ruser/$project");
+ dstamp;
+}
+
 sub all(){
     print("This function has not yet been implemented.\n\n");
+    $c=0;
     # loop through the providers
-    # push -f
+    foreach $r (@repos){
+	chomp $r;
+        ($ruser,$rnew)=split(/:/, $repos[$c]);
+        set_remote;
+	print ("git push\n");
+	$c++;
+    }
+    # Set the repo back to original origin.
+    ($ruser,$rnew)=split(/:/, $repos[0]);
+    set_remote;
 }
 
 
@@ -131,12 +147,6 @@ if ($ans =~ m/[a-zA-Z]/){
  return $ruser,$rnew;
 }
 
-sub init(){
- print("\n$git remote set-url origin git\@$rnew:$ruser/$project\n");
- system("$git remote set-url origin git\@$rnew:$ruser/$project");
- dstamp;
-}
-
 sub current(){
  @repo=split(/[\@:\/+]/, `$git config --get remote.origin.url`);
 
@@ -174,5 +184,5 @@ if ( ! -d ".git"){
 	}else{
 	current;
 	menu;
-	init;
+	set_remote;
 }
