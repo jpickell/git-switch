@@ -69,7 +69,7 @@ sub set_remote(){
 }
 
 sub all(){
-    print("This function has not yet been implemented.\n\n");
+    #print("This function has not yet been implemented.\n\n");
     $c=0;
     # loop through the providers
     foreach $r (@repos){
