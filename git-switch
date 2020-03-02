@@ -72,6 +72,20 @@ sub all(){
     #print("This function has not yet been implemented.\n\n");
     $c=0;
     # loop through the providers
+    system("clear");
+    print("This will push your committed changes to the following repos:\n\n");
+    foreach $r (@repos){
+        ($ruser,$rnew)=split(/:/, $r);
+        printf(" %-12s %-20s\n", $ruser, $rnew);
+    }
+    print ("\nDo you wish to continue? \n[y|n] --> ");$ans=<>;chomp $ans;
+
+    if ($ans ne "y"){ 
+	print("Exiting... No commits pushed.\n\n"); 
+ 	exit; 
+    }
+    print "Continuing...\n";
+
     foreach $r (@repos){
 	chomp $r;
         ($ruser,$rnew)=split(/:/, $repos[$c]);
