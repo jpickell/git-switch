@@ -76,12 +76,14 @@ sub all(){
 	chomp $r;
         ($ruser,$rnew)=split(/:/, $repos[$c]);
         set_remote;
+        # Need to add some error checking here
 	system("git push");
 	$c++;
     }
     # Set the repo back to original origin.
     ($ruser,$rnew)=split(/:/, $repos[0]);
     set_remote;
+    print("\n\nOrigin set back to $rnew:$ruser/$project\n");
 }
 
 
