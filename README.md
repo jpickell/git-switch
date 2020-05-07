@@ -2,9 +2,12 @@
 
 ---
 
+* Now with the ability to push to all configured remotes via option [a] *
+
 Horrible little script that easily switches between git remote urls and different user accounts.
 
 *and force overwrites your commit history- this is generally a very bad thing.  Make sure you know what you're doing*
+
 
 ---
 
