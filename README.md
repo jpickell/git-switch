@@ -2,7 +2,7 @@
 
 ---
 
-* Now with the ability to push to all configured remotes via option [a] *
+*Now with the ability to push to all configured remotes via option [a]*
 
 Horrible little script that easily switches between git remote urls and different user accounts.
 
